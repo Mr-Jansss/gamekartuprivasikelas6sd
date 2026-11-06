@@ -27,24 +27,7 @@ Game edukasi keamanan data pribadi untuk anak SD kelas 6. Anak-anak belajar memb
 npm install
 ```
 
-### 2. Setup Database
 
-Buat file `.env`:
-
-```env
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=root
-DB_PASSWORD=jans123
-DB_NAME=gameprivasi
-
-PORT=3000
-NODE_ENV=development
-
-ADMIN_PASSWORD=admin123
-ADMIN_SECRET=your-secret-key-min-32-chars
-SESSION_DURATION_HOURS=8
-```
 
 Initialize database:
 
