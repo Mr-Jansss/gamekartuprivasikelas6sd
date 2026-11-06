@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Boleh atau Jangan?</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+  <!-- Login Screen -->
+  <div id="loginScreen" class="screen active">
+    <div class="container">
+      <h1 class="title">🔐 Admin Dashboard</h1>
+      <div class="card">
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="adminPassword">Password Admin</label>
+            <input 
+              type="password" 
+              id="adminPassword" 
+              required 
+              autocomplete="current-password"
+              placeholder="Masukkan password admin"
+            >
+          </div>
+          <button type="submit" class="btn btn-primary btn-large">LOGIN</button>
+        </form>
+        <p id="loginError" class="error-message"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Screen -->
+  <div id="dashboardScreen" class="screen">
+    <div class="admin-header">
+      <h1>📊 Dashboard Admin</h1>
+      <button id="logoutButton" class="btn btn-secondary">Logout</button>
+    </div>
+
+    <div class="admin-container">
+      <!-- Create Session -->
+      <div class="admin-section">
+        <h2>Buat Sesi Baru</h2>
+        <div class="card">
+          <form id="createSessionForm" class="create-session-form">
+            <input 
+              type="text" 
+              id="sessionName" 
+              placeholder="Nama sesi (contoh: Kelas 6A - Senin)"
+              required
+              maxlength="100"
+            >
+            <button type="submit" class="btn btn-success">Buat Sesi</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Session List -->
+      <div class="admin-section">
+        <div class="section-header">
+          <h2>Daftar Sesi</h2>
+          <button id="refreshSessions" class="btn btn-secondary btn-small">🔄 Refresh</button>
+        </div>
+        <div id="sessionsList" class="sessions-list">
+          <p class="loading">Memuat...</p>
+        </div>
+      </div>
+
+      <!-- Active Session Details -->
+      <div id="activeSessionSection" class="admin-section" style="display: none;">
+        <div class="section-header">
+          <h2>Sesi Aktif: <span id="activeSessionName"></span></h2>
+          <div class="session-actions">
+            <button id="projectorMode" class="btn btn-primary btn-small">📺 Mode Proyektor</button>
+            <button id="viewIndividual" class="btn btn-secondary btn-small active-view">👤 Individual</button>
+            <button id="viewTeam" class="btn btn-secondary btn-small">👥 Tim</button>
+          </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="card">
+          <div id="leaderboardContainer">
+            <table class="leaderboard-table" id="leaderboardTable">
+              <thead>
+                <tr>
+                  <th>Peringkat</th>
+                  <th>Nama</th>
+                  <th>Tim</th>
+                  <th>Skor</th>
+                  <th>Benar</th>
+                  <th>Combo</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboardBody">
+                <tr><td colspan="7">Belum ada data</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="card">
+          <h3>📈 Statistik Pembelajaran</h3>
+          <p class="stats-hint">Kartu yang paling sering salah (perlu diulang materinya):</p>
+          <div id="cardStatsContainer" class="card-stats">
+            <p class="loading">Memuat statistik...</p>
+          </div>
+        </div>
+
+        <!-- Export -->
+        <div class="card">
+          <h3>💾 Ekspor Data</h3>
+          <button id="exportCSV" class="btn btn-primary">Download CSV</button>
+          <button id="clearScores" class="btn btn-danger">Reset Semua Skor</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projector Mode -->
+  <div id="projectorScreen" class="screen projector-screen">
+    <button id="exitProjector" class="exit-projector">✕</button>
+    <div class="projector-header">
+      <h1 class="projector-title">🏆 PAPAN SKOR</h1>
+      <p class="projector-session" id="projectorSessionName"></p>
+    </div>
+    <div id="projectorContent" class="projector-content">
+      <!-- Will be filled dynamically -->
+    </div>
+  </div>
+
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>

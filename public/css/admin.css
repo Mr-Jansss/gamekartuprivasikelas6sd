@@ -1,0 +1,690 @@
+/* Admin-specific styles */
+
+.admin-body {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  min-height: 100vh;
+}
+
+/* Override for login screen */
+#loginScreen {
+  min-height: 100vh;
+  display: none;
+  padding: 40px 20px;
+}
+
+#loginScreen.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dashboard screen must be flex column when active */
+#dashboardScreen {
+  display: none;
+  min-height: 100vh;
+}
+
+#dashboardScreen.active {
+  display: block !important;
+}
+
+.admin-header {
+  background: var(--white);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.admin-header h1 {
+  color: var(--dark);
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+.admin-section {
+  margin-bottom: 40px;
+}
+
+.admin-section h2 {
+  color: var(--white);
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.session-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-small {
+  padding: 10px 20px;
+  font-size: 1rem;
+  min-height: auto;
+}
+
+.active-view {
+  background: var(--purple) !important;
+  box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.3);
+}
+
+/* Create Session Form */
+.create-session-form {
+  display: flex;
+  gap: 15px;
+  align-items: stretch;
+}
+
+.create-session-form input {
+  flex: 1;
+  padding: 16px;
+  font-size: 1.1rem;
+  border: 2px solid var(--gray);
+  border-radius: 10px;
+}
+
+.create-session-form button {
+  min-width: 150px;
+}
+
+/* Sessions List */
+.sessions-list {
+  display: grid;
+  gap: 15px;
+}
+
+.session-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.session-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.session-info {
+  flex: 1;
+}
+
+.session-code {
+  display: inline-block;
+  background: var(--purple);
+  color: var(--white);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: 3px;
+}
+
+.session-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.session-meta {
+  font-size: 0.9rem;
+  color: #718096;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.session-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.session-status.open {
+  background: #C6F6D5;
+  color: #22543D;
+}
+
+.session-status.closed {
+  background: #FEB2B2;
+  color: #742A2A;
+}
+
+.session-actions-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Leaderboard Table */
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.leaderboard-table th {
+  background: var(--gray);
+  font-weight: 700;
+  color: var(--dark);
+  position: sticky;
+  top: 0;
+}
+
+.leaderboard-table tbody tr:hover {
+  background: #F7FAFC;
+}
+
+.rank {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.rank-1 { color: #FFD700; }
+.rank-2 { color: #C0C0C0; }
+.rank-3 { color: #CD7F32; }
+
+.team-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+}
+
+.score-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--purple);
+}
+
+/* Card Statistics */
+.card-stats {
+  display: grid;
+  gap: 15px;
+}
+
+.card-stat-bar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.card-stat-info {
+  min-width: 200px;
+  font-weight: 600;
+}
+
+.card-stat-bar-container {
+  flex: 1;
+  background: var(--gray);
+  height: 30px;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-stat-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--red), var(--orange));
+  border-radius: 15px;
+  transition: width 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 12px;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.stats-hint {
+  color: #718096;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+/* Projector Mode */
+.projector-screen {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  color: var(--white);
+  padding: 40px;
+  position: relative;
+}
+
+.exit-projector {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: var(--white);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 100;
+}
+
+.exit-projector:hover {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.1);
+}
+
+.projector-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.projector-title {
+  font-size: 4rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.projector-session {
+  font-size: 1.5rem;
+  color: var(--yellow);
+  font-weight: 600;
+}
+
+.projector-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Projector Leaderboard */
+.projector-podium {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.podium-place {
+  text-align: center;
+  animation: slideUp 0.6s ease-out;
+}
+
+.podium-place.first {
+  order: 2;
+}
+
+.podium-place.second {
+  order: 1;
+}
+
+.podium-place.third {
+  order: 3;
+}
+
+.podium-rank {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.podium-name {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--yellow);
+}
+
+.podium-score {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.podium-base {
+  background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+  border-radius: 15px 15px 0 0;
+  padding: 30px;
+  min-width: 250px;
+}
+
+.podium-place.first .podium-base {
+  height: 200px;
+}
+
+.podium-place.second .podium-base {
+  height: 150px;
+}
+
+.podium-place.third .podium-base {
+  height: 120px;
+}
+
+.projector-list {
+  display: grid;
+  gap: 20px;
+}
+
+.projector-item {
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  padding: 25px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideIn 0.5s ease-out;
+  backdrop-filter: blur(10px);
+}
+
+.projector-rank {
+  font-size: 3rem;
+  font-weight: 900;
+  min-width: 80px;
+}
+
+.projector-name {
+  flex: 1;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.projector-score {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--yellow);
+  min-width: 150px;
+  text-align: right;
+}
+
+/* Team View */
+.team-leaderboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.team-card-large {
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.team-card-rank {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.team-card-name {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.team-card-score {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--yellow);
+  margin-bottom: 10px;
+}
+
+.team-card-meta {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.7);
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Error Message */
+.error-message {
+  color: var(--red);
+  margin-top: 15px;
+  font-weight: 600;
+  text-align: center;
+  min-height: 24px;
+}
+
+.loading {
+  text-align: center;
+  color: #718096;
+  padding: 40px;
+  font-style: italic;
+}
+
+/* Login specific */
+#loginScreen .card {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#loginScreen .title {
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+#loginScreen .form-group {
+  margin-bottom: 25px;
+}
+
+#loginScreen .btn-large {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .create-session-form {
+    flex-direction: column;
+  }
+
+  .session-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .session-actions-buttons {
+    width: 100%;
+  }
+
+  .leaderboard-table {
+    font-size: 0.9rem;
+  }
+
+  .leaderboard-table th,
+  .leaderboard-table td {
+    padding: 8px 4px;
+  }
+
+  .projector-title {
+    font-size: 2.5rem;
+  }
+
+  .projector-podium {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .podium-place {
+    order: initial !important;
+  }
+
+  .projector-item {
+    padding: 15px 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .projector-rank,
+  .projector-name,
+  .projector-score {
+    min-width: auto;
+    text-align: center;
+  }
+}
+
+
+/* FORCE OVERRIDE - Make sure buttons are visible */
+#loginForm {
+  width: 100%;
+}
+
+#loginForm button[type="submit"] {
+  display: block !important;
+  width: 100% !important;
+  background: #6B46C1 !important;
+  color: white !important;
+  padding: 20px !important;
+  font-size: 1.3rem !important;
+  font-weight: bold !important;
+  border: none !important;
+  border-radius: 12px !important;
+  cursor: pointer !important;
+  margin-top: 15px !important;
+}
+
+#loginForm button[type="submit"]:hover {
+  background: #553C9A !important;
+}
+
+#createSessionForm button {
+  display: block !important;
+  background: #6BCF7F !important;
+  color: white !important;
+}
+
+/* Make sure login screen is visible */
+#loginScreen.active {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#loginScreen .container {
+  width: 100%;
+  max-width: 600px;
+}
+
+#loginScreen .card {
+  background: white !important;
+  color: #2D3748 !important;
+}
+
+
+/* FORCE BUTTON VISIBILITY */
+.btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  border: none !important;
+  font-weight: 700 !important;
+  transition: all 0.3s !important;
+}
+
+.btn-success {
+  background: #6BCF7F !important;
+  color: white !important;
+}
+
+.btn-primary {
+  background: #6B46C1 !important;
+  color: white !important;
+}
+
+.btn-danger {
+  background: #FF6B6B !important;
+  color: white !important;
+}
+
+.btn-secondary {
+  background: #FF9A56 !important;
+  color: white !important;
+}
+
+.btn-small {
+  padding: 10px 20px !important;
+  font-size: 1rem !important;
+  min-height: auto !important;
+}
+
+.session-actions-buttons button,
+.section-header button {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Session Cards */
+.session-card {
+  background: white !important;
+}
+
+.session-code {
+  background: #6B46C1 !important;
+  color: white !important;
+}
+
+/* Make sure buttons are clickable */
+button {
+  pointer-events: auto !important;
+}

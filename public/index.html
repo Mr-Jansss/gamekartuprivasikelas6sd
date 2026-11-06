@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Game edukasi keamanan data pribadi untuk anak SD">
+  <title>Boleh atau Jangan? - Game Privasi Data</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Sound Toggle (always visible) -->
+  <button id="soundToggle" class="sound-toggle" aria-label="Toggle sound">
+    <span class="sound-icon">🔊</span>
+  </button>
+
+  <!-- Admin Button (top left) -->
+  <a href="/admin" class="admin-link" title="Dashboard Admin">
+    <span>👨‍💼</span> Admin
+  </a>
+
+  <!-- Start Screen -->
+  <div id="startScreen" class="screen active">
+    <div class="container">
+      <div class="mascot mascot-happy" aria-hidden="true">🤖</div>
+      <h1 class="title">Boleh atau Jangan?</h1>
+      <p class="subtitle">Belajar Jaga Data Pribadi</p>
+
+      <div class="card">
+        <p class="mascot-speech">
+          Hai! Aku Robi, robot penjaga data. Ayo main bersama! 
+          Kamu akan belajar informasi mana yang boleh dan jangan dibagikan ke orang asing di internet.
+        </p>
+
+        <form id="startForm">
+          <div class="form-group">
+            <label for="sessionCode">Kode Sesi (dari guru)</label>
+            <input 
+              type="text" 
+              id="sessionCode" 
+              maxlength="4"
+              placeholder="Contoh: ABCD"
+              required
+              autocomplete="off"
+              style="text-transform: uppercase;"
+            >
+          </div>
+
+          <div id="teamSelection" class="form-group" style="display: none;">
+            <label>Pilih Tim Kamu</label>
+            <div id="teamButtons" class="team-buttons"></div>
+          </div>
+
+          <div id="nicknameGroup" class="form-group" style="display: none;">
+            <label for="nickname">Nama Panggilan atau Nama Tim</label>
+            <input 
+              type="text" 
+              id="nickname" 
+              maxlength="15"
+              placeholder="Contoh: Andi, Tim Naga"
+              required
+              autocomplete="off"
+            >
+            <p class="input-hint warning">
+              ⚠️ <strong>Penting:</strong> Pakai nama panggilan atau nama tim, <strong>JANGAN nama lengkap!</strong>
+            </p>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-large" id="startButton">
+            MULAI BERMAIN
+          </button>
+        </form>
+
+        <div id="offlineScores" class="offline-notice" style="display: none;">
+          <p>📦 Ada <span id="offlineCount">0</span> skor yang belum terkirim</p>
+          <button id="retryOffline" class="btn btn-secondary">Kirim Ulang</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="gameScreen" class="screen">
+    <div class="game-header">
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-label">Skor</span>
+          <span class="stat-value" id="scoreDisplay">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Benar</span>
+          <span class="stat-value" id="correctDisplay">0/10</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Combo</span>
+          <span class="stat-value combo" id="comboDisplay">0</span>
+        </div>
+      </div>
+      <div class="lives" id="livesDisplay">
+        <span class="heart">❤️</span>
+        <span class="heart">❤️</span>
+        <span class="heart">❤️</span>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div id="cardProgress" class="card-progress">
+        Kartu <span id="cardNumber">1</span> dari 10
+      </div>
+
+      <div class="timer-bar-container">
+        <div id="timerBar" class="timer-bar"></div>
+      </div>
+
+      <div id="cardDisplay" class="card card-game">
+        <div class="card-icon" id="cardIcon">📱</div>
+        <h2 class="card-text" id="cardText">Nomor HP</h2>
+        <p class="card-question">Boleh dibagikan ke orang asing di internet?</p>
+
+        <div class="answer-buttons">
+          <button class="btn btn-success btn-answer" id="bolehButton">
+            <span class="btn-icon">✓</span>
+            <span>BOLEH</span>
+          </button>
+          <button class="btn btn-danger btn-answer" id="janganButton">
+            <span class="btn-icon">✗</span>
+            <span>JANGAN</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explanation Overlay -->
+    <div id="explanationOverlay" class="overlay">
+      <div class="explanation-card">
+        <div class="mascot" id="explanationMascot">🤖</div>
+        <h3 id="explanationTitle">Hampir!</h3>
+        <p id="explanationText" class="explanation-text"></p>
+        <button class="btn btn-primary" id="continueButton">LANJUT</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results Screen -->
+  <div id="resultsScreen" class="screen">
+    <div class="container">
+      <div class="mascot mascot-happy" id="resultsMascot">🤖</div>
+      <h1 class="results-title" id="resultsTitle">Game Selesai!</h1>
+
+      <div class="card results-card">
+        <div class="title-badge" id="titleBadge">
+          <span class="title-emoji" id="titleEmoji">🛡️</span>
+          <span class="title-text" id="titleText">Penjaga Data</span>
+        </div>
+
+        <div class="results-stats">
+          <div class="result-stat">
+            <div class="result-value" id="finalScore">0</div>
+            <div class="result-label">Skor Total</div>
+          </div>
+          <div class="result-stat">
+            <div class="result-value" id="finalCorrect">0/10</div>
+            <div class="result-label">Jawaban Benar</div>
+          </div>
+          <div class="result-stat">
+            <div class="result-value" id="finalCombo">0</div>
+            <div class="result-label">Combo Terbaik</div>
+          </div>
+        </div>
+
+        <div id="saveStatus" class="save-status"></div>
+
+        <div class="result-actions">
+          <button class="btn btn-primary btn-large" id="viewLeaderboardButton">
+            📊 LIHAT PAPAN SKOR
+          </button>
+          <button class="btn btn-secondary btn-large" id="playAgainButton">
+            🔄 MAIN LAGI
+          </button>
+        </div>
+      </div>
+
+      <canvas id="confetti" aria-hidden="true"></canvas>
+    </div>
+  </div>
+
+  <script type="module" src="/js/app.js"></script>
+
+  <!-- Leaderboard Modal -->
+  <div id="leaderboardModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>🏆 Papan Skor</h2>
+        <button class="modal-close" id="closeLeaderboard">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="view-toggle">
+          <button class="view-btn active" data-view="individual">👤 Individual</button>
+          <button class="view-btn" data-view="team">👥 Tim</button>
+        </div>
+        <div id="leaderboardContent">
+          <p class="loading-text">Memuat...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

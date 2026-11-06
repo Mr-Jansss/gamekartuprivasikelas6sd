@@ -1,0 +1,22 @@
+{
+  "name": "boleh-atau-jangan-game",
+  "version": "1.0.0",
+  "description": "Game edukasi keamanan data pribadi untuk anak SD kelas 6",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "init-db": "node scripts/init-db.js"
+  },
+  "keywords": ["education", "privacy", "game", "kids"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.6.5",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0"
+  }
+}
